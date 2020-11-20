@@ -8,6 +8,9 @@ SENSOR_IP_ADDRESS = '192.168.1.101'
 SENSOR_TELNET_PORT = 23
 SENSOR_UDPout_PORT = 49152 #magic number #Use 'IP' command over telnet to figure out where this should be going
 
+LOCAL_IP_ADDRESS = 'localhost'
+LOCAL_UDP_PORT = 5678
+
 
 
 
@@ -31,6 +34,20 @@ class Communicator:
         print('Creating Communicator Object')
 
     # Reads config
+
+    def the_new_thing(self):
+
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.bind(LOCAL_IP_ADDRESS,LOCAL_UDP_PORT)
+
+        init_message = b''
+
+        sock.sendto(init_message,(SENSOR_IP_ADDRESS,SENSOR_TELNET_PORT))
+
+        while True:
+            data, addr = sock.recvfrom(1024)
+            print(f'data: {data}')
+
 
     def read_config_and_send_initialization(self):
         print('Reading XML')
@@ -60,12 +77,12 @@ class Communicator:
     # Bias
 
 if __name__ == '__main__':
-    try:
-        c = Communicator()
-        c.read_config_and_send_initialization()
-        c.listen_for_samples()
-    except:
-        pass
+    c = Communicator()
+    #c.read_config_and_send_initialization()
+    #c.listen_for_samples()
+    c.the_new_thing()
+
+
 
 # Unit listens on port 23
 # T transmits packets to WLAN
