@@ -1,0 +1,65 @@
+<?xml version="1.0" standalone="yes"?>
+<dsWirelessFTCalibrationFile xmlns="http://tempuri.org/dsWirelessFTCalibrationFile.xsd">
+  <xs:schema id="dsWirelessFTCalibrationFile" targetNamespace="http://tempuri.org/dsWirelessFTCalibrationFile.xsd" xmlns:mstns="http://tempuri.org/dsWirelessFTCalibrationFile.xsd" xmlns="http://tempuri.org/dsWirelessFTCalibrationFile.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="dsWirelessFTCalibrationFile" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tblCalibrationInformation">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CalibrationPartNumber" type="xs:string" minOccurs="0" />
+                <xs:element name="ForceUnits" type="xs:string" minOccurs="0" />
+                <xs:element name="TorqueUnits" type="xs:string" minOccurs="0" />
+                <xs:element name="CountsPerForce" type="xs:long" minOccurs="0" />
+                <xs:element name="CountsPerTorque" type="xs:long" minOccurs="0" />
+                <xs:element name="MaxRatings" type="xs:string" minOccurs="0" />
+                <xs:element name="Resolutions" type="xs:string" minOccurs="0" />
+                <xs:element name="Ranges" type="xs:string" minOccurs="0" />
+                <xs:element name="_x0031_6BitScaleFactors" msprop:Generator_UserColumnName="16BitScaleFactors" msprop:Generator_ColumnVarNameInTable="column16BitScaleFactors" type="xs:string" minOccurs="0" />
+                <xs:element name="SerialNumber" type="xs:string" minOccurs="0" />
+                <xs:element name="BodyStyle" type="xs:string" minOccurs="0" />
+                <xs:element name="Family" type="xs:string" minOccurs="0" />
+                <xs:element name="CalibrationDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="MatrixFx" type="xs:string" minOccurs="0" />
+                <xs:element name="MatrixFy" type="xs:string" minOccurs="0" />
+                <xs:element name="MatrixFz" type="xs:string" minOccurs="0" />
+                <xs:element name="MatrixTx" type="xs:string" minOccurs="0" />
+                <xs:element name="MatrixTy" type="xs:string" minOccurs="0" />
+                <xs:element name="MatrixTz" type="xs:string" minOccurs="0" />
+                <xs:element name="GaugeGains" type="xs:string" minOccurs="0" />
+                <xs:element name="GaugeOffsets" type="xs:string" minOccurs="0" />
+                <xs:element name="CalibrationIndex" type="xs:int" minOccurs="0" />
+                <xs:element name="TransducerIndex" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <tblCalibrationInformation>
+    <CalibrationPartNumber>SI-950-40</CalibrationPartNumber>
+    <ForceUnits>N</ForceUnits>
+    <TorqueUnits>N-m</TorqueUnits>
+    <CountsPerForce>1000000</CountsPerForce>
+    <CountsPerTorque>1000000</CountsPerTorque>
+    <MaxRatings>950 950 1900 40 40 40 </MaxRatings>
+    <Resolutions>24 24 24 24 24 24</Resolutions>
+    <Ranges>24 24 24 24 24 24</Ranges>
+    <_x0031_6BitScaleFactors>57986 57986 57986 1221 1221 1221 </_x0031_6BitScaleFactors>
+    <SerialNumber>FT30561</SerialNumber>
+    <BodyStyle>Mini85</BodyStyle>
+    <Family>Wireless F/T</Family>
+    <CalibrationDate>2020-03-23T14:22:36.2288945-04:00</CalibrationDate>
+    <MatrixFx>-615.42993769129 66.7924649212737 2179.84996428716 -29976.8700751642 -1770.0796672787 29114.550632163 </MatrixFx>
+    <MatrixFy>-2967.3177278777 32418.1911136103 907.204182260639 -17347.6064717737 1766.84567035082 -16726.7588471349 </MatrixFy>
+    <MatrixFz>35315.7870510717 -174.34912355497 36460.7605207755 -26.6783012862121 36053.5745560828 89.3910755799625 </MatrixFz>
+    <MatrixTx>-59.5846704417712 452.930443940113 -1192.54543656856 -240.288114639872 1201.8606478698 -236.183351979295 </MatrixTx>
+    <MatrixTy>1365.47690511133 -6.89656361691505 -726.019648610385 415.633965697167 -661.925614715682 -405.016243913695 </MatrixTy>
+    <MatrixTz>53.2681320500247 -734.145293814329 58.4677251413537 -784.953422007019 66.555470357108 -765.965614153824 </MatrixTz>
+    <GaugeGains>446 450 442 422 434 426 </GaugeGains>
+    <GaugeOffsets>31756 31860 32010 31790 30349 31930 </GaugeOffsets>
+    <CalibrationIndex>0</CalibrationIndex>
+    <TransducerIndex>2</TransducerIndex>
+  </tblCalibrationInformation>
+</dsWirelessFTCalibrationFile>
