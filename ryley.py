@@ -2,7 +2,7 @@ import socket
 import time
 import csv
 from telnetlib import Telnet
-
+#import crc16
 
 SENSOR_IP_ADDRESS = '192.168.1.101'
 SENSOR_TELNET_PORT = 23
@@ -28,19 +28,31 @@ class FT:
     def csv_list(self):
         return [self.force_x,self.force_y,self.force_z,self.torque_x,self.torque_y,self.torque_z]
 
+class udp_RecvFrame_Send_UDP_Packetizer:
+    def __init__(self):
+        self.sequence = 0
+
+    def bytes_for(self, command, parameters):
+        buff = b'\x00\x00\x04\x40\x84'
+        #crc16.crc16xmodem
+        return buff
+
 
 class Communicator:
     def __init__(self):
         print('Creating Communicator Object')
+        self.udp_packetizer = udp_RecvFrame_Send_UDP_Packetizer()
 
-    # Reads config
+
+    # Reads config        
 
     def the_new_thing(self):
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.bind(LOCAL_IP_ADDRESS,LOCAL_UDP_PORT)
+        sock.bind((LOCAL_IP_ADDRESS,LOCAL_UDP_PORT))
 
-        init_message = b''
+        init_message = self.udp_packetizer.bytes_for('ping','')
+        print(init_message)
 
         sock.sendto(init_message,(SENSOR_IP_ADDRESS,SENSOR_TELNET_PORT))
 
