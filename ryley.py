@@ -2,7 +2,7 @@ import socket
 import time
 import csv
 from telnetlib import Telnet
-import crc16
+#import crc16
 
 SENSOR_IP_ADDRESS = '192.168.1.101'
 SENSOR_TELNET_PORT = 23
@@ -32,6 +32,19 @@ class udp_RecvFrame_Send_UDP_Packetizer:
     def __init__(self):
         self.sequence = 0
 
+    def crc16(self, data):
+        data = bytearray(data)
+        offset = 0
+        crc = 0xFFFF
+        for i in range(0, len(data)):
+            crc ^= data[offset + i] << 8
+            for j in range(0,8):
+                if (crc & 0x8000) > 0:
+                    crc =(crc << 1) ^ 0x1021
+                else:
+                    crc = crc << 1
+        return crc & 0xFFFF
+
     def bytes_for(self, command, parameters = 0):
         #commands
         # 1 - Start Streaming, Parameter is number of samples to send, 0 = unlimited
@@ -59,7 +72,7 @@ class udp_RecvFrame_Send_UDP_Packetizer:
 
         buff = length_bytes + buff
 
-        crc_code = crc16.crc16xmodem(buff)
+        crc_code = crc16(buff)
 
         crc_bytes = int(crc_code).to_bytes(2, byteorder='big')
 
