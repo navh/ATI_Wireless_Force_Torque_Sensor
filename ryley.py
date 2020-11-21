@@ -33,7 +33,7 @@ class udp_RecvFrame_Send_UDP_Packetizer:
         self.sequence = 0
 
     def bytes_for(self, command, parameters):
-        buff = b'\x00\x00\x04\x40\x84'
+        buff = bytearray.fromhex('0000044084')
         #crc16.crc16xmodem
         return buff
 
@@ -54,7 +54,7 @@ class Communicator:
         init_message = self.udp_packetizer.bytes_for('ping','')
         print(init_message)
 
-        sock.sendto(init_message,(SENSOR_IP_ADDRESS,SENSOR_TELNET_PORT))
+        sock.sendto(init_message,(SENSOR_IP_ADDRESS,SENSOR_UDPout_PORT))
 
         while True:
             data, addr = sock.recvfrom(1024)
