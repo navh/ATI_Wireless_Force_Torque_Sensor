@@ -33,7 +33,7 @@ class udp_RecvFrame_Send_UDP_Packetizer:
         self.sequence = 0
 
     def bytes_for(self, command, parameters):
-        buff = bytearray.fromhex('0000044084')
+        buff = bytes(bytearray.fromhex('0000044084'))
         #crc16.crc16xmodem
         return buff
 
