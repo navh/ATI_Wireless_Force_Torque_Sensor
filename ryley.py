@@ -66,13 +66,11 @@ class udp_RecvFrame_Send_UDP_Packetizer:
         
         buff = command_bytes + sequence_bytes + parameters_bytes
 
-        length_bytes = int(len(buff)).to_bytes(2, byteorder='big')
-
-        length_bytes += 2 # To account for crc code added to the end
+        length_bytes = int(len(buff) + 2).to_bytes(2, byteorder='big') # +2 to account for crc code added later
 
         buff = length_bytes + buff
 
-        crc_code = crc16(buff)
+        crc_code = self.crc16(buff)
 
         crc_bytes = int(crc_code).to_bytes(2, byteorder='big')
 
